@@ -68,7 +68,23 @@ nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;bac
 .dl{animation:glw 2.8s ease-in-out infinite}@keyframes glw{0%,100%{box-shadow:0 10px 30px rgba(139,92,246,.35)}50%{box-shadow:0 14px 44px rgba(34,211,238,.5)}}
 .chips li{transition:transform .3s var(--ease),border-color .3s}.chips li:hover{transform:translateY(-3px);border-color:var(--violet)}
 .rvc{transition:transform .35s var(--ease),box-shadow .35s}.rvc:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(139,92,246,.18)}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:999px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:14px;transition:transform .3s var(--ease),box-shadow .3s}
+@keyframes rtIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.rt-back{display:inline-flex;align-items:center;min-height:44px;margin:8px 0 14px;color:var(--mute);font-weight:700;text-decoration:none}.rt-back:hover{color:var(--violet)}
+.rt-kick{display:block;font:700 12px/1 inherit;letter-spacing:.16em;color:var(--violet);margin-bottom:12px}
+.pl-lead{color:var(--mute);font-size:18px;margin-top:14px;max-width:560px}
+.pl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px;margin-top:34px}
+.pl-card{display:block;padding:30px 24px;border-radius:28px;border:1px solid var(--bd);background:var(--soft);color:var(--ink);text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.pl-card:hover,.pl-card:focus-visible{transform:translateY(-6px);border-color:var(--violet);box-shadow:0 22px 50px rgba(139,92,246,.25);outline:0}
+.pl-card .pi{display:block;font-size:40px;margin-bottom:12px}.pl-card b{display:block;font-size:20px}.pl-card small{display:block;color:var(--mute);font-size:14px;margin:4px 0 14px}.pl-card em{font-style:normal;font-weight:800;color:var(--violet)}
+.pl-opts{display:grid;gap:14px;margin-top:28px;max-width:640px}
+.pl-opt{display:flex;align-items:center;gap:16px;padding:20px;border-radius:24px;border:1px solid var(--bd);background:var(--soft);color:var(--ink);text-decoration:none;transition:transform .3s var(--ease),border-color .3s}
+.pl-opt:hover{transform:translateX(6px);border-color:var(--violet)}
+.pl-opt .oi{width:52px;height:52px;flex:none;border-radius:16px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(34,211,238,.25))}
+.pl-opt b{display:block;font-size:17px}.pl-opt small{color:var(--mute);font-size:14px}.pl-opt .ar{margin-left:auto;font-size:22px;color:var(--violet)}
+.pl-embed{margin-top:28px;border-radius:28px;overflow:hidden;border:1px solid var(--bd);background:var(--soft);min-height:360px;display:grid;place-items:center;text-align:center;padding:24px}
+.pl-embed iframe{width:100%;height:min(78vh,720px);border:0;display:block}
+.pl-embed .ph{max-width:420px}.pl-embed .ph b{display:block;font-size:22px;margin-bottom:8px}.pl-embed .ph p{color:var(--mute)}
+.pn-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:16px}.pn-msg{color:var(--mute);font-size:13px;min-height:16px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:999px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:14px;transition:transform .3s var(--ease),box-shadow .3s}
 .btn.p{color:#fff;background:linear-gradient(120deg,var(--violet),#a26cf6 60%,var(--cyan));box-shadow:0 12px 40px -10px rgba(124,77,255,.8)}.btn.p:hover{transform:translateY(-3px);box-shadow:0 18px 50px -8px rgba(124,77,255,.9)}
 .btn.g{border:1px solid var(--bd);background:var(--soft)}.btn.g:hover{border-color:var(--violet);transform:translateY(-3px)}.btn.sm{padding:11px 20px;font-size:12px}.btn:active{transform:scale(.96)}
 /* hero */
@@ -150,6 +166,8 @@ footer{border-top:1px solid var(--bd);padding:56px 0 36px}.fg{display:flex;justi
    ===================================================================== */
 const SITE={
  name:"Sonify", tagline:"Your Music. Your Vibe.", developer:"Hashir",
+ webPlayer:"", /* online player link for PC & Mac, added later */
+ iosWeb:"", /* iOS web version link, added later */
  firebase:{apiKey:"",authDomain:"",projectId:"",appId:""}, /* paste Firebase config here to go live */
  dp:"", /* your Instagram profile photo file, e.g. dp.jpg (optional) */
  adminEmail:"", /* your Google email: marks your reviews as Developer (never shown) */
@@ -185,7 +203,7 @@ const SITE={
 <div id="bar"></div>
 <header id="top"><div class="wrap bar">
 <a class="logo" href="#home" id="logo" aria-label="Sonify home"></a>
-<nav id="nav" aria-label="Main"><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#moods">Categories</a><a href="#beta">What's New</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></nav>
+<nav id="nav" aria-label="Main"><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#moods">Categories</a><a href="#beta">Download</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></nav>
 <button class="theme" id="theme" aria-label="Switch theme">◐</button>
 <a class="btn p sm go" href="#beta">Download App</a>
 <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
@@ -208,22 +226,23 @@ const SITE={
 <section id="features"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Everything You Need.</span><span class="b grad">Nothing You Don't.</span></h2><div class="feats" id="feats"></div></div></section>
 <section id="screens" style="background:var(--soft)"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Designed to</span><span class="b grad">Feel Beautiful</span><p>Real screens from the Sonify app. Swipe to explore.</p></h2><div class="gal" id="gal"></div><div class="dots" id="dots"></div></div></section>
 <section id="moods"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Music That Fits</span><span class="b grad">The Moment</span></h2><div class="cats" id="cats"></div></div></section>
-<section id="beta"><div class="wrap"><div class="beta reveal"><div>
-<h2 class="disp" style="font-size:clamp(40px,6vw,72px)"><span class="stroke">Sonify</span> <span class="grad" id="vname">V4</span></h2>
-<p id="vdesc" style="color:var(--mute);margin-top:14px;font-size:18px">Experience the latest version of Sonify.</p>
-<div class="ver"><span id="ver"></span><span id="stat"></span></div><ul id="log"></ul>
-<a class="btn p dl" href="#">Download APK</a> <button type="button" class="btn sh" id="shb">Share Sonify</button><small class="vsz">Android APK · 55.9 MB</small><div class="thx" id="thx" aria-live="polite"><div class="em">🎉</div><h3>Thanks for downloading Sonify!</h3><p>Congratulations, enjoy Sonify. Support us by giving a rating and sharing with friends.</p><div class="stars" id="stars" role="group" aria-label="Rate Sonify"><button type="button" aria-label="1 star">★</button><button type="button" aria-label="2 stars">★</button><button type="button" aria-label="3 stars">★</button><button type="button" aria-label="4 stars">★</button><button type="button" aria-label="5 stars">★</button></div><small id="rmsg"></small></div></div>
-<div class="phone"><img id="vshot" data-shot="icon" alt="Sonify app screen"></div></div></div></section>
+
 <section id="faq"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Questions?</span><span class="b grad">Answered</span></h2><div class="faq" id="faqs"></div></div></section>
 <section id="reviews"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Loved By</span><span class="b grad">Listeners</span></h2>
 <div class="rv reveal"><div class="rvsum"><b id="rvavg">0.0</b><div id="rvst"></div><small id="rvcnt"></small></div>
 <div class="rvform" id="rvform"></div><div class="rvlist" id="rvlist"></div></div></div></section>
 <section style="background:var(--soft);padding:clamp(64px,9vw,100px) 0"><div class="wrap"><div class="dev reveal"><h2 class="disp"><span class="stroke">Built With Passion</span> <span class="grad">For Music.</span></h2>
-<div class="meta"><div><small>Developer</small><b id="dev"></b></div><div><small>Application</small><b id="app"></b></div></div><a class="btn p sm" style="margin-top:28px" href="https://github.com/itsmy5784-oss" target="_blank" rel="noopener">Follow Hashir</a></div></div></section>
+<div class="meta"><div><small>Developer</small><b id="dev"></b></div><div><small>Application</small><b id="app"></b></div></div><a class="btn p sm" style="margin-top:28px" href="https://github.com/itsmy5784-oss" target="_blank" rel="noopener">Follow Hashir</a></div></section>
 </main>
-<footer><div class="wrap"><div class="fg"><div><a class="logo" href="#home" id="flogo"></a><p>Your music. Your vibe.</p></div>
-<div class="fl"><a href="#home">Home</a><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#beta">What's New</a><a href="#beta">Download</a><a href="#faq">FAQ</a></div></div>
-<div class="copy"><span id="by"></span><a href="https://github.com/itsmy5784-oss" target="_blank" rel="noopener" style="font-weight:700;text-decoration:underline">Follow Hashir</a><span>Sonify V4.6</span><span>© 2026 Sonify. All rights reserved.</span></div></div></footer>
+</div><section id="beta"><div class="wrap"><div class="beta reveal"><div>
+<h2 class="disp" style="font-size:clamp(40px,6vw,72px)"><span class="stroke">Sonify</span> <span class="grad" id="vname">V4</span></h2>
+<p id="vdesc" style="color:var(--mute);margin-top:14px;font-size:18px">Experience the latest version of Sonify.</p>
+<div class="ver"><span id="ver"></span><span id="stat"></span></div><ul id="log"></ul>
+<a class="btn p dl" href="#">Download APK</a> <button type="button" class="btn sh" id="shb">Share Sonify</button><small class="vsz">Android APK · 55.9 MB</small><div class="thx" id="thx" aria-live="polite"><div class="em">🎉</div><h3>Thanks for downloading Sonify!</h3><p>Congratulations, enjoy Sonify. Support us by giving a rating and sharing with friends.</p><div class="stars" id="stars" role="group" aria-label="Rate Sonify"><button type="button" aria-label="1 star">★</button><button type="button" aria-label="2 stars">★</button><button type="button" aria-label="3 stars">★</button><button type="button" aria-label="4 stars">★</button><button type="button" aria-label="5 stars">★</button></div><small id="rmsg"></small></div></div>
+<div class="phone"><img id="vshot" data-shot="icon" alt="Sonify app screen"></div></div></div></section><footer><div class="wrap"><div class="fg"><div><a class="logo" href="#home" id="flogo"></a><p>Your music. Your vibe.</p></div>
+<div class="fl"><a href="#home">Home</a><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#beta">Download</a><a href="#beta">Download</a><a href="#faq">FAQ</a></div></div>
+<div class="copy"><span id="by"></span><a href="https://github.com/itsmy5784-oss" target="_blank" rel="noopener" style="font-weight:700;text-decoration:underline">Follow Hashir</a><span>Sonify V4.6</span><span>© 2026 Sonify. All rights reserved.</span></div></div><div class="pn-wrap"><button type="button" class="btn sm" id="pnBtn">🔔 Allow notifications</button><small id="pnMsg" class="pn-msg" aria-live="polite"></small></div>
+</footer>
 <script>
 /* Embedded Sonify screenshots + app icon (resized). Replace a value with "file.jpg" to use your own file. */
 const SHOTS={
@@ -358,8 +377,23 @@ draw();boot();
 <script>
 (()=>{const st=document.getElementById('stick'),b=document.getElementById('beta');let inB=false,tk=false;
 new IntersectionObserver(e=>{inB=e[0].isIntersecting;up()}).observe(b);
-function up(){tk=false;st.hidden=!(scrollY>700&&!inB)}
+function up(){tk=false;st.hidden=!(scrollY>700&&!inB&&true)}
 addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(up)}},{passive:true});
 st.addEventListener('click',e=>{e.preventDefault();try{gtag('event','sticky_cta')}catch(x){}b.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'})});})();
+</script>
+<script>
+/* Push notifications: only asked for when the visitor clicks the button. Registers sw.js from the site root. */
+(()=>{const b=document.getElementById('pnBtn'),m=document.getElementById('pnMsg');
+const say=t=>{m.textContent=t};
+if(!('serviceWorker' in navigator)||!('Notification' in window)){b.disabled=true;say('Notifications are not supported in this browser.');return}
+if(Notification.permission==='granted'){b.textContent='🔔 Notifications on';b.disabled=true}
+b.addEventListener('click',async()=>{
+ try{
+  const perm=await Notification.requestPermission();
+  if(perm!=='granted'){say('Notifications were not allowed.');return}
+  await navigator.serviceWorker.register('sw.js');
+  b.textContent='🔔 Notifications on';b.disabled=true;say('Thanks! You will get updates from Sonify.');
+ }catch(e){say('Could not turn on notifications on this page.')}
+});})();
 </script>
 </body></html>
