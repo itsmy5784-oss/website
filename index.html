@@ -256,6 +256,13 @@ footer{border-top:1px solid var(--bd);padding:56px 0 36px}.fg{display:flex;justi
 .shot p,.shot small{display:block;transition:opacity .5s,transform .5s var(--ease);opacity:.35;transform:translateY(8px)}.shot.act p,.shot.act small{opacity:1;transform:none}
 .dots{display:flex;justify-content:center;gap:10px;margin-top:6px}.dots button{position:relative;width:9px;height:9px;border-radius:99px;background:var(--bd);transition:width .45s var(--ease),background .3s}.dots button::after{content:"";position:absolute;inset:-14px -4px}.dots .on{width:34px;background:linear-gradient(90deg,var(--violet),var(--cyan))}
 @media(prefers-reduced-motion:reduce){.shot .phone,.phone.fx::after,.shot.act .gl{animation:none}.gal:not(.in) .shot{opacity:1;transform:none}}
+
+/* Ad slots – spaced, no overlap */
+.ad-slot{display:flex;justify-content:center;align-items:center;width:100%;margin:28px auto;padding:16px 12px;min-height:60px;clear:both;position:relative;z-index:1;box-sizing:border-box}
+.ad-slot.ad-banner{min-height:320px}
+.ad-slot.ad-native{min-height:90px;max-width:100%;overflow-x:auto}
+.ad-label{display:block;width:100%;text-align:center;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute,#888);margin-bottom:8px;opacity:.7}
+
 </style><!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6S0XDQK10V"></script>
 <script>
@@ -338,11 +345,42 @@ const SITE={
 </div></div>
 <div class="marq" aria-hidden="true" data-pg="home"><div class="track" id="track"></div></div>
 <section id="features" data-pg="home features"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Everything You Need.</span><span class="b grad">Nothing You Don't.</span></h2><div class="feats" id="feats"></div></div></section>
+
+<div class="ad-slot ad-native" data-ad="native">
+  <div style="width:100%;max-width:728px;margin:0 auto;text-align:center">
+    <span class="ad-label">Advertisement</span>
+    <script async="async" data-cfasync="false" src="https://bauval.org/21/62fa8d28aafa4e2ef38b61dfc6f59e33"></script>
+    <div id="container-62fa8d28aafa4e2ef38b61dfc6f59e33"></div>
+  </div>
+</div>
+
 <section id="screens" data-pg="home screens" style="background:var(--soft)"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Designed to</span><span class="b grad">Feel Beautiful</span><p>Real screens from the Sonify app. Swipe to explore.</p></h2><div class="gal" id="gal"></div><div class="dots" id="dots"></div></div></section>
+
+<div class="ad-slot ad-banner" data-ad="banner-160">
+  <div style="width:160px;margin:0 auto;text-align:center">
+    <span class="ad-label">Advertisement</span>
+    <script>
+      atOptions = {
+        'key' : '7f83306c2bfa75281f6f2a9a30f664de',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script src="https://bauval.org/22/7f83306c2bfa75281f6f2a9a30f664de"></script>
+  </div>
+</div>
+
 <section id="moods" data-pg="home moods"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Music That Fits</span><span class="b grad">The Moment</span></h2><div class="cats" id="cats"></div></div></section>
 <section class="x-sec" id="mood" data-pg="home moods"><div class="wrap"><span class="x-k">FIND YOUR VIBE</span><h2 class="x-h">What&rsquo;s your mood today?</h2>
 <p class="x-p">Sonify groups music into moods. Pick one to see a playlist from the app.</p><div class="x-chips" id="xm" role="group" aria-label="Moods"></div><div class="x-mood" id="xmr" aria-live="polite">Tap a mood above.</div></div></section>
 <section class="x-sec" id="blog" data-pg="home blog"><div class="wrap"><span class="x-k">THE SONIFY BLOG</span><h2 class="x-h">Tips, guides &amp; stories</h2><p class="x-p">Short reads to help you get more from Sonify.</p><div class="blog" id="blogList"></div><a class="btn" href="#/blog" id="blogAll">Read all posts →</a></div></section>
+
+<div class="ad-slot" data-ad="smartlink" style="min-height:auto;padding:8px">
+  <a class="btn g" href="https://araplhn.org/4/5f58503c05f97b229ee7c5a10f6f0596" target="_blank" rel="noopener sponsored" style="margin:0 auto">Discover more apps</a>
+</div>
+
 <section class="x-sec" id="install" data-pg="home install"><div class="wrap"><span class="x-k">GET STARTED</span><h2 class="x-h">Install in four steps</h2>
 <div class="x-grid">
 <div class="x-card reveal"><span class="x-n">1</span><b>Download</b><p>Open the Download section and get the Sonify APK.</p></div>
@@ -350,30 +388,6 @@ const SITE={
 <div class="x-card reveal"><span class="x-n">3</span><b>Allow install</b><p>If Android asks, allow installs from your browser. The wording varies by phone.</p></div>
 <div class="x-card reveal"><span class="x-n">4</span><b>Start listening</b><p>Open Sonify, pick a mood and press play.</p></div>
 </div></div></section>
-
-
-
-
-<!-- Native Banner Ad -->
-<div style="display:flex;justify-content:center;padding:20px 16px;margin:0 auto;max-width:100%;overflow:hidden;">
-<script async="async" data-cfasync="false" src="https://bauval.org/21/62fa8d28aafa4e2ef38b61dfc6f59e33"></script>
-<div id="container-62fa8d28aafa4e2ef38b61dfc6f59e33"></div>
-</div>
-
-<!-- Banner 160x300 -->
-<div style="display:flex;justify-content:center;padding:24px 16px;margin:0 auto;">
-<script>
-  atOptions = {
-    'key' : '7f83306c2bfa75281f6f2a9a30f664de',
-    'format' : 'iframe',
-    'height' : 300,
-    'width' : 160,
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/7f83306c2bfa75281f6f2a9a30f664de"></script>
-</div>
-
 <section id="faq" data-pg="home faq"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Questions?</span><span class="b grad">Answered</span></h2><div class="faq" id="faqs"></div></div></section>
 <section id="reviews" data-pg="home reviews"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Loved By</span><span class="b grad">Listeners</span></h2>
 <div class="rv reveal"><div class="rvsum"><b id="rvavg">0.0</b><div id="rvst"></div><small id="rvcnt"></small></div>
