@@ -257,11 +257,89 @@ footer{border-top:1px solid var(--bd);padding:56px 0 36px}.fg{display:flex;justi
 .dots{display:flex;justify-content:center;gap:10px;margin-top:6px}.dots button{position:relative;width:9px;height:9px;border-radius:99px;background:var(--bd);transition:width .45s var(--ease),background .3s}.dots button::after{content:"";position:absolute;inset:-14px -4px}.dots .on{width:34px;background:linear-gradient(90deg,var(--violet),var(--cyan))}
 @media(prefers-reduced-motion:reduce){.shot .phone,.phone.fx::after,.shot.act .gl{animation:none}.gal:not(.in) .shot{opacity:1;transform:none}}
 
-/* Ad slots – compact */
-.ad-slot{display:flex;justify-content:center;align-items:center;width:100%;margin:12px auto;padding:6px 8px;min-height:0;clear:both;position:relative;z-index:1;box-sizing:border-box}
-.ad-slot.ad-banner{min-height:0;transform:scale(0.85);transform-origin:top center;margin-bottom:4px}
-.ad-slot.ad-native{min-height:0;max-width:100%;overflow-x:auto;max-height:120px;overflow:hidden}
-.ad-label{display:block;width:100%;text-align:center;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute,#888);margin-bottom:6px;opacity:.75}
+
+
+
+/* Ad boxes – clear, big, responsive */
+.ad-slot{
+  display:block;
+  width:100%;
+  max-width:920px;
+  margin:36px auto;
+  padding:0 16px;
+  clear:both;
+  position:relative;
+  z-index:1;
+  box-sizing:border-box;
+}
+.ad-box{
+  border:1px solid var(--bd, rgba(128,128,128,.25));
+  border-radius:16px;
+  background:var(--soft, rgba(128,128,128,.06));
+  padding:14px 12px 18px;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+.ad-label{
+  display:block;
+  width:100%;
+  text-align:center;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--mute,#888);
+  margin:0 0 12px;
+  opacity:.9;
+}
+.ad-box-inner{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  min-height:90px;
+  overflow:hidden;
+}
+/* Native – full width responsive */
+.ad-slot.ad-native .ad-box-inner{
+  min-height:100px;
+  max-width:100%;
+}
+.ad-slot.ad-native .ad-box-inner > div,
+.ad-slot.ad-native iframe{
+  max-width:100% !important;
+  width:100% !important;
+}
+/* Banner 160x300 – scale up on larger screens, stay usable on mobile */
+.ad-slot.ad-banner .ad-box-inner{
+  min-height:300px;
+}
+.ad-slot.ad-banner .ad-frame{
+  width:160px;
+  max-width:100%;
+  margin:0 auto;
+}
+@media (min-width:480px){
+  .ad-slot.ad-banner .ad-frame{
+    transform:scale(1.15);
+    transform-origin:top center;
+    margin-bottom:40px;
+  }
+}
+@media (min-width:768px){
+  .ad-slot{margin:48px auto;padding:0 24px}
+  .ad-slot.ad-banner .ad-frame{
+    transform:scale(1.35);
+    margin-bottom:90px;
+  }
+  .ad-box{padding:18px 20px 24px;border-radius:20px}
+}
+@media (min-width:1024px){
+  .ad-slot.ad-banner .ad-frame{
+    transform:scale(1.5);
+    margin-bottom:140px;
+  }
+}
 
 </style><!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6S0XDQK10V"></script>
@@ -347,28 +425,34 @@ const SITE={
 <section id="features" data-pg="home features"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Everything You Need.</span><span class="b grad">Nothing You Don't.</span></h2><div class="feats" id="feats"></div></div></section>
 
 <div class="ad-slot ad-native" data-ad="native">
-  <div style="width:100%;max-width:600px;margin:0 auto;text-align:center;max-height:120px;overflow:hidden">
+  <div class="ad-box">
     <span class="ad-label">Advertisement</span>
-    <script async="async" data-cfasync="false" src="https://bauval.org/21/62fa8d28aafa4e2ef38b61dfc6f59e33"></script>
-    <div id="container-62fa8d28aafa4e2ef38b61dfc6f59e33"></div>
+    <div class="ad-box-inner">
+      <script async="async" data-cfasync="false" src="https://bauval.org/21/62fa8d28aafa4e2ef38b61dfc6f59e33"></script>
+      <div id="container-62fa8d28aafa4e2ef38b61dfc6f59e33"></div>
+    </div>
   </div>
 </div>
 
 <section id="screens" data-pg="home screens" style="background:var(--soft)"><div class="wrap"><h2 class="title disp reveal"><span class="a stroke">Designed to</span><span class="b grad">Feel Beautiful</span><p>Real screens from the Sonify app. Swipe to explore.</p></h2><div class="gal" id="gal"></div><div class="dots" id="dots"></div></div></section>
 
 <div class="ad-slot ad-banner" data-ad="banner-160">
-  <div style="width:160px;margin:0 auto;text-align:center;max-height:280px;overflow:hidden">
+  <div class="ad-box">
     <span class="ad-label">Advertisement</span>
-    <script>
-      atOptions = {
-        'key' : '7f83306c2bfa75281f6f2a9a30f664de',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
-    <script src="https://bauval.org/22/7f83306c2bfa75281f6f2a9a30f664de"></script>
+    <div class="ad-box-inner">
+      <div class="ad-frame">
+        <script>
+          atOptions = {
+            'key' : '7f83306c2bfa75281f6f2a9a30f664de',
+            'format' : 'iframe',
+            'height' : 300,
+            'width' : 160,
+            'params' : {}
+          };
+        </script>
+        <script src="https://bauval.org/22/7f83306c2bfa75281f6f2a9a30f664de"></script>
+      </div>
+    </div>
   </div>
 </div>
 
