@@ -662,15 +662,18 @@ if($("theme")) $("theme").onclick=()=>{
   syncThemeIcon();
 };
 syncThemeIcon();
-$("burger").onclick=()=>{
+$("burger")&&($("burger").onclick=()=>{
   $("burger").classList.toggle("on");
-  $("mnav").classList.toggle("open");
-};
-$("mnav").querySelectorAll("a").forEach(a=>a.onclick=()=>{$("burger").classList.remove("on");$("mnav").classList.remove("open")});
+  $("mnav")&&$("mnav").classList.toggle("open");
+});
+$("mnav")&&$("mnav").querySelectorAll("a").forEach(a=>a.onclick=()=>{
+  $("burger")&&$("burger").classList.remove("on");
+  $("mnav")&&$("mnav").classList.remove("open");
+});
 $("goDl")&&($("goDl").onclick=()=>openDlChoose());
 $("backHome")&&($("backHome").onclick=e=>{e.preventDefault();goHome()});
 $("dlBtn")&&($("dlBtn").onclick=startApk);
-if($("dlReal")) $("dlReal").href=APK_UNI||APK;
+if($("dlReal")) $("dlReal").href=APK;
 
 
 addEventListener("scroll",()=>{
@@ -735,8 +738,21 @@ document.querySelectorAll('a.btn-p[href="#get"]').forEach(a=>{
   a.addEventListener("click",e=>{e.preventDefault();openDlChoose()});
 });
 
-try{setLogos();buildGal();buildMoods();syncThemeIcon();}catch(e){console.error(e)}
-// fallback: set hero from SHOTS if still empty
-try{const h=document.getElementById("heroShot");if(h&&!h.src&&SHOTS&&SHOTS.home)h.src=SHOTS.home;}catch(e){}
+
+function bootImages(){
+  try{setLogos();buildGal();buildMoods();}catch(e){console.error(e)}
+  try{
+    const h=document.getElementById("heroShot");
+    if(h&&SHOTS&&SHOTS.home) h.src=SHOTS.home;
+    const dsi=document.getElementById("dlSonifyImg");
+    if(dsi) dsi.src=(SHOTS&&SHOTS.icon)||(typeof LOGO!=="undefined"?LOGO:"");
+    const ns=document.getElementById("navSonify");
+    if(ns) ns.src=(SHOTS&&SHOTS.icon)||(typeof LOGO!=="undefined"?LOGO:"");
+  }catch(e){}
+}
+bootImages();
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", bootImages);
+
+try{syncThemeIcon()}catch(e){}
 </script>
 </body></html>
